@@ -224,7 +224,7 @@ if (id.has(message.author.id) && message.channel.type === 'dm') {
     bot.errMsg(`${message.author.username} | ${message.content}`)
   
 //u gotdeletes, try now,
-}// apparantly it also got other people's messages
+}
 //   if (message.channel.type === 'dm') {
 
 //   }
