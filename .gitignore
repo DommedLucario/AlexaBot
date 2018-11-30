@@ -1,4 +1,5 @@
 node-modules/
 package-lock.json
+botconfig.json
 .idea/
 LICENSE
