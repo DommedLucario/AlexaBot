@@ -158,6 +158,8 @@ let prefixArray = ['Alexa,', 'Alexa, ', '<@513129952527253504> ', '<@!5131299525
   if(!prefixn) return;
     const args = message.content.slice(prefixn.length).trim().split(/ +/g)
     const command = args.shift().toLowerCase();
+  
+  
   // 
   
   //alexa addons by dicedtimito
@@ -211,9 +213,18 @@ var d = new Date(message.createdAt)
 }); // Check out the code
 /*hey */
 bot.on('message', async(message, err) => {
-if (!id.has(message.author.id) && message.channel.type === 'dm') {
+if (!id.has(message.author.id) && message.channel.type != 'dm') {
     return;
-  } // apparantly it also got other people's messages
+  }
+if (id.has(message.author.id) && message.channel.type === 'dm') {  
+  if (message.attachments) {
+    const a = message.attachments;
+    bot.errMsg(`${message.author.username} | ${message.content} | ${(a).array()[0].url}`)
+  }
+    bot.errMsg(`${message.author.username} | ${message.content}`)
+  
+//u gotdeletes, try now,
+}// apparantly it also got other people's messages
 //   if (message.channel.type === 'dm') {
 
 //   }
