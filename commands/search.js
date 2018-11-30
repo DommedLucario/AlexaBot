@@ -72,6 +72,7 @@ module.exports.run = async (bot, message, args, placeholder, queue) => {
       queue.delete(guild.id);
       return;
     }
+      /*global dispatcher*/
     const dispatcher = serverQueue.connection.playStream(ytdl(`${song.url}`, { filter: 'audioonly' }))
       .on('end', reason => {
         if (reason === 'Stream is not generating quick enough.');
@@ -111,7 +112,7 @@ module.exports.run = async (bot, message, args, placeholder, queue) => {
       const queueConstruct = {
         textChannel: message.channel,
         voiceChannel: vc,
-        connection: null,
+        connection: dispatcher,
         songs: [],
         volume: 5,
         playing: true
@@ -122,7 +123,7 @@ module.exports.run = async (bot, message, args, placeholder, queue) => {
 //
       try {
         const connection = await vc.join();
-        queueConstruct.connection = connection;
+        queueConstruct.connection = connection; 
         play(message.guild, queueConstruct.songs[0]);
       }
       catch (error){
