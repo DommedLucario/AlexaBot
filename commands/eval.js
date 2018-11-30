@@ -4,7 +4,7 @@ var h = ['127888387364487168' , '246867546924384266', '231956829159161856']
 var id = new Set(h)
 //
 
-module.exports.run = async (bot, message, args,queue) => {
+module.exports.run = async (bot, message, args, placeholder,queue) => {
         if(!id.has(message.author.id)) return message.reply(":x: You can't use this command, if you this is an error please talk to a bot administrator preferably the bot owner, if the bot owner is not available please use ;support to see our channel for support.")
         try {
           const code = args.join(" ");
