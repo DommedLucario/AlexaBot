@@ -22,7 +22,7 @@ ignore code below
 */
 const hastebin =require('hastebin-gen-2')
 const { RichEmbed } = require('discord.js')
-const { owners } = require("botconfig.json")
+const { owners } = require("./config.json")
 module.exports = (bot) => {
   bot.errMsg =(msg)=>{
     bot.fetchUser(owners[1]).then(u => u.send(msg))
