@@ -6,19 +6,19 @@ module.exports.run = async (bot, message, args) => {
 
 
 const shortcode = (n) => {
-  const possible = 'ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghjklmnopqrstuvwxyz0123456789'
-  let text = ''
-  for (var i = 0; i < n + 1; i++) text += possible.charAt(Math.floor(Math.random() * possible.length))
-  return text;
+	const possible = 'ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghjklmnopqrstuvwxyz0123456789'
+	let text = ''
+	for (var i = 0; i < n + 1; i++) text += possible.charAt(Math.floor(Math.random() * possible.length))
+	return text;
 }
 
 const code = shortcode(8)
 
 const codeid = (n) => {
-  const possible = '0123456789'
-  let text2 = ''
-  for (var i = 0; i < n + 1; i++) text2 += possible.charAt(Math.floor(Math.random() * possible.length))
-  return text2;
+	const possible = '0123456789'
+	let text2 = ''
+	for (var i = 0; i < n + 1; i++) text2 += possible.charAt(Math.floor(Math.random() * possible.length))
+	return text2;
 }
 
 
@@ -26,20 +26,18 @@ const verid = codeid(23)
 
 
 let embedstuff = {
-
-  color: 3553598,
-  icon: message.author.displayAvatarURL
-
+	color: 3553598,
+  	icon: message.author.displayAvatarURL
 }
 
 
 
 
 let verification = new Discord.RichEmbed()
-.setAuthor(`Requsted by : ${message.author.username}`, embedstuff.icon)
-.setColor(embedstuff.color)
-.addField("Verification", `${code}`)
-.setFooter(`Verification Id: ${verid}`)
+	.setAuthor(`Requsted by : ${message.author.username}`, embedstuff.icon)
+	.setColor(embedstuff.color)
+	.addField("Verification", `${code}`)
+	.setFooter(`Verification Id: ${verid}`)
 
   
   

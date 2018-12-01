@@ -22,11 +22,12 @@ ignore code below
 */
 const hastebin =require('hastebin-gen-2')
 const { RichEmbed } = require('discord.js')
+const { owners } = require("botconfig.json")
 module.exports = (bot) => {
   bot.errMsg =(msg)=>{
-    bot.fetchUser(process.env.ralsei).then(u => u.send(msg))
-    bot.fetchUser(process.env.diced).then(u => u.send(msg))
-    bot.fetchUser("127888387364487168").then(u => u.send(msg))
+    bot.fetchUser(owners[1]).then(u => u.send(msg))
+    bot.fetchUser(owners[0]).then(u => u.send(msg))
+    bot.fetchUser(owners[2]).then(u => u.send(msg))
   }
     bot.devMsg =(msg)=>{
     bot.fetchUser(process.env.ralsei).then(u => u.send(msg))

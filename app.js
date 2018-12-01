@@ -1,14 +1,13 @@
 const Discord = require("discord.js");
-const constprefix = require('./botconfig.json')
+const { prefix, token, owners } = require('./botconfig.json')
 const fs = require("fs")
-const token = process.env.token;
 const bot = new Discord.Client({disableEveryone: true});
 const http = require('http');
 const express = require('express');
 const app = express();
 const superagent = require('superagent')
 require("./comments.js")(bot)
-var h = ['127888387364487168' , '246867546924384266', '231956829159161856']
+var h = owners
 var id = new Set(h)
 app.get("/", (request, response) => {
   response.sendFile(__dirname + '/index.html');
