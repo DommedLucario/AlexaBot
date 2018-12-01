@@ -1,5 +1,5 @@
 //figured it out, paste old code back
-const { owners } = require("./../botconfig.json")
+const { owners } = require("./../config.json")
 var I = owners
 , id = new Set(I)
 //
