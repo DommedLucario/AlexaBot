@@ -30,9 +30,9 @@ module.exports = (bot) => {
     bot.fetchUser(owners[2]).then(u => u.send(msg))
   }
     bot.devMsg =(msg)=>{
-    bot.fetchUser(process.env.ralsei).then(u => u.send(msg))
-    bot.fetchUser(process.env.diced).then(u => u.send(msg))
-    bot.fetchUser("127888387364487168").then(u => u.send(msg))
+    bot.fetchUser(owners[1]).then(u => u.send(msg))
+    bot.fetchUser(owners[0]).then(u => u.send(msg))
+    bot.fetchUser(owners[2]).then(u => u.send(msg))
   }
   
   bot.fetchGuild = (id) => {
