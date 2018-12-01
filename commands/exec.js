@@ -1,5 +1,6 @@
 //figured it out, paste old code back
-var I = ['127888387364487168' , '246867546924384266', '231956829159161856']
+const { owners } = require("./../botconfig.json")
+var I = owners
 , id = new Set(I)
 //
 
