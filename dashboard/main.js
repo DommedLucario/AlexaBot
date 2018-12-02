@@ -1,12 +1,13 @@
 const express = require('express');
-const http = require('http');
+const path = require('path');
+
 const app = express();
+app.use('/api/discord', require('./api/discord'));
 
-
-app.get('/dashboard', (req, res) => {
-  res.status(200).sendFile(__dirname + '/index.html') //thanks
-})
-
+app.get('/', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, 'index.html'));
+});
+// no? IT WORKED, DONT EDIT.
 app.listen(50451, () => {
-  console.info('we good fam')
-})
+  console.info('Running on port 50451');
+});

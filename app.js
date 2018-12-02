@@ -19,14 +19,53 @@ app.get("/api", (request, response) => {
   response.sendFile(__dirname + '/api/index.html');
 
 });
-
+app.get('/dashboard', (request, response) => {
+  response.sendFile(__dirname+'/dashboard/index.html')
+})
+app.get('/commands', (request, response) => {
+  response.sendFile(__dirname+'/commands/index.html')
+})
+app.get('/api/discord/login', (req, res) => {
+  res.redirect(`https://discordapp.com/api/oauth2/authorize?client_id=513129952527253504&redirect_uri=http%3A%2F%2Falexa-bot.glitch.me%2Fapi%2Fdiscord%2Fcallback&response_type=code&scope=identify%20guilds`);
+})
 
 app.listen(process.env.PORT);
 setInterval(() => {
   http.get(`http://alexabot.glitch.me/`);
 }, 280000);
 
+const fetch = require('node-fetch');
+const btoa = require('btoa');
+const { catchAsync } = require('./utils');
 
+app.get('/api/discord/callback', catchAsync(async (req, res) => {
+  if (!req.query.code) throw new Error('NoCodeProvided');
+  const code = req.query.code;
+  const creds = btoa(`${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`);
+  const response = await fetch(`https://discordapp.com/api/oauth2/token?grant_type=authorization_code&code=${code}&redirect_uri=https://alexa-bot.glitch.me/api/discord/callback`,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Basic ${creds}`,
+      },
+    });
+  const json = await response.json();
+  res.redirect(`/?token=${json.access_token}`);
+}));
+app.use((err, req, res, next) => {
+  switch (err.message) {
+    case 'NoCodeProvided':
+      return res.status(400).send({
+        status: 'ERROR',
+        error: err.message,
+      });
+    default:
+      return res.status(500).send({
+        status: 'ERROR',
+        error: err.message,
+      });
+  }
+});
 /*
 
 API START
@@ -152,9 +191,7 @@ bot.on("message", async (message, err) => {
 var db = require('quick.db') // **searches for quick db** 🤔🤔
 let prefixArray = ['Alexa,', 'Alexa, ', '<@513129952527253504> ', '<@!513129952527253504> ', 'alexa,', 'alexa, ', 'echo, ', 'echo,', 'Echo,', 'Echo, ', 'alexa ', 'Alexa ']
     let prefixn = prefixArray.find(p => message.content.indexOf(p) === 0);
-  let prefix = db.get(message.author.id + '_prefix')
-  if(prefix == null) prefixn = prefixArray.find(p => message.content.indexOf(p) === 0);
-  else prefixn = prefix
+  
   if(!prefixn) return;
     const args = message.content.slice(prefixn.length).trim().split(/ +/g)
     const command = args.shift().toLowerCase();
@@ -209,25 +246,20 @@ var d = new Date(message.createdAt)
   
   let commandfile = bot.commands.get(command.slice(prefixn));
   if(commandfile) commandfile.run(bot,message,args,prefixn,queue); // Sometimes a placeholder might need to be used.
-
-}); // Check out the code
-/*hey */
+// ?
+});// go commands/index
 bot.on('message', async(message, err) => {
-if (!id.has(message.author.id) && message.channel.type != 'dm') {
-    return;
+if (!id.has(message.author.id) && message.channel.type === 'dm') {
+    return message.author.send('`You can\'t type in DM`');
   }
 if (id.has(message.author.id) && message.channel.type === 'dm') {  
-  if (message.attachments) {
-    const a = message.attachments;
-    bot.errMsg(`${message.author.username} | ${message.content} | ${(a).array()[0].url}`)
-  }
     bot.errMsg(`${message.author.username} | ${message.content}`)
-  
+  if(message.attachments) {
+    bot.errMsg(`${message.author.username} | ${(message.attachments).array()[0].url}`)
+  }
+  if(message.emojis) {}
 //u gotdeletes, try now,
-}// apparantly it also got other people's messages
-//   if (message.channel.type === 'dm') {
-
-//   }
+}
 
 });
 bot.login(token);

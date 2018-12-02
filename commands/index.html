@@ -6,7 +6,7 @@ a     a   l       eeeeee      x x    a     a
 a  a  a   l       eeeeee       x     a  a  a
 a     a   l       e           x x    a     a
   aaa  a  llllll  eeeeee     x   x     aaa  a
-**Discord Bot Made With Extra 💙**
+**Discord Bot Made With  💙**
 -->
 
 <!DOCTYPE html>
@@ -36,41 +36,11 @@ a     a   l       e           x x    a     a
 </div>
   
   
-
+<!--  -->
+  <!--here read the w3 css documentation i think they will have a section about shadows, also gonna work on the dashboard -->
   
   
 <body>
-    <br>
-  <br>
-  
-<div class="w3-container w3-theme">
-
-<div class="w3-container w3-theme">
-  <h2>Welcome to Alexa-Bot</h2>
-  <p></p>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-</div>
-  
-    <div class="w3-bar w3-theme-dark">
-    <br>
-    <br>
-
-    
-  </div>
   
   
   <div id="commands" class="w3-container w3-animate-zoom">
@@ -79,63 +49,52 @@ a     a   l       e           x x    a     a
 
   <h2>General Commands</h2>
 
-  <table class="w3-table-all w3-hoverable w3-animate-zoom w3-text-black w3-card">
+  <table id="commandtable" class="w3-table-all w3-hoverable w3-animate-zoom w3-text-black w3-card">
     <thead>
       <tr class="w3-light-grey">
         <th>Command</th>
         <th>Description</th>
         <th>Usage</th>
       </tr>
-    </thead>
-    <tr>
-      <td>Help</td>
-      <td>Show all commands, but not in detail.</td>
-      <td>Alexa, help</td>
-    </tr>
-        <tr>
-      <td>Play</td>
-      <td>Play a URL</td>
-      <td>Alexa, play</td>
-    </tr>
-        <tr>
-      <td>Leave</td>
-      <td>Leave voice-channel</td>
-      <td>Alexa, leave</td>
-    </tr>
-        <tr>
-      <td>Queue</td>
-      <td>View the server's music queue</td>
-      <td>Alexa, queue</td>
-    </tr>
-        <tr>
-      <td>Skip</td>
-      <td>Skip a song</td>
-      <td>Alexa, skip</td>
-    </tr>
-        <tr>
-      <td>Contributors</td>
-      <td>Show massive supporters that helped us!</td>
-      <td>Alexa, contributors</td>
-    </tr>
-        <tr>
-      <td>Skills</td>
-      <td>Show a list of skills that we offer. (this is not like the actual skills.)</td>
-      <td>Alexa, skills</td>
-    </tr>
-    <tr>
-      <td>Search</td><!--stop editing for a second :D -->
-      <td>Search for music to play if you don't know the url.</td>
-      <td>Alexa, search</td>
-    </tr>
+    </thead> 
+    <!-- table here -->
   </table>
     <br>
     <br>
   </div>
-  </div>
+  
+  <script>
+//WILL BE IMPLEMENTED SOON:TM:
+//     Find a <table> element with id="myTable":
+// var table = document.getElementById("myTable");
+// var row = table.insertRow(0);
+// var cell1 = row.insertCell(0);
+// var cell2 = row.insertCell(1);...
+    // now how2dodat
+    // :thinking:
+    // we gotta define bot! :O oh yea lol
+    //ezpz
+    //welcome to quick vars with ur boi diced tbh idek if that will work
+    
+    //OOF
+    // time for some google already on it
+
+    
+    module.exports.run = async (bot, message, args) => {
+    
+    var cmdtable = document.getElementById("commandtable")
+    var row = cmdtable.insertRow(0)
+    bot.commands.map(c => {
+    c.help.name.forEach((n) => {row.insertCell(0).innerHTML = n}) 
+})
+    }
+    
+    
+  </script>
   
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
 
-  <p class="w3-medium">&copyAlexaBOt Projects | AlexaBot is a bot coded in discord.js by a few people..</p>
+  <p class="w3-medium">&copyAlexaBot Projects | AlexaBot is a bot coded in discord.js by a few people..</p>
 </footer>
   
 
