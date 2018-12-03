@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { prefix, token, owners } = require('./config.json')
+const { token, owners } = require('./config.json')
 const fs = require("fs")
 const bot = new Discord.Client({disableEveryone: true});
 const http = require('http');
@@ -147,6 +147,7 @@ const queue = new Map()
 bot.on("message", async (message, err) => {
   if(err) bot.msgErr(err)
   if(message.author.bot) return;
+  if(message.author.id === '257413019787722752') return message.channel.send('Sem, you are blacklisted from alexa commands.')
   if(message.channel.type === "dm" && !id.has(message.author.id)) return message.reply("`ERROR` Can't use commands in Direct Messages.");
 var db = require('quick.db') // **searches for quick db** 🤔🤔
 let prefixArray = ['Alexa,', 'Alexa, ', '<@513129952527253504> ', '<@!513129952527253504> ', 'alexa,', 'alexa, ', 'echo, ', 'echo,', 'Echo,', 'Echo, ', 'alexa ', 'Alexa ']
