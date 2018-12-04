@@ -138,6 +138,12 @@ bot.on("ready", async () => {
       
       
   },10000)
+
+  const hook = new Discord.WebhookClient('519363230611537922', 'rtfODw3urwNKUomCcjsDUg8tlHcYWDfXoHr6eGPuLw8kvwzBhrfPmxGiMTy39qXijSQb');
+  const embed = new Discord.RichEmbed().setColor(0x36393E).setDescription("I have been summoned 👀");
+  hook.send(embed)
+
+  hook.send(`I, ${bot.user.username}, is onine!`)
   
   //end status
 
